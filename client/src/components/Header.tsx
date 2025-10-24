@@ -1,6 +1,7 @@
 import { Brain, User, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ThemeToggle from "@/components/ThemeToggle";
 
 interface HeaderProps {
   userName?: string;
@@ -24,6 +25,8 @@ export default function Header({ userName = "Guest", userAvatar, onProfileClick,
           <div className="w-2 h-2 rounded-full bg-status-online" />
           <span className="text-sm text-muted-foreground">Secure Session</span>
         </div>
+        
+        <ThemeToggle />
         
         <Button 
           size="icon" 
