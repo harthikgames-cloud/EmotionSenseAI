@@ -2,6 +2,7 @@ import { Brain, User, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useLocation } from "wouter";
 
 interface HeaderProps {
   userName?: string;
@@ -11,14 +12,20 @@ interface HeaderProps {
 }
 
 export default function Header({ userName = "Guest", userAvatar, onProfileClick, onSettingsClick }: HeaderProps) {
+  const [, setLocation] = useLocation();
+
   return (
     <header className="h-16 border-b flex items-center justify-between px-4 md:px-6 bg-background">
-      <div className="flex items-center gap-2">
+      <button 
+        onClick={() => setLocation("/")}
+        className="flex items-center gap-2 hover-elevate rounded-lg px-2 py-1 -ml-2"
+        data-testid="button-home-logo"
+      >
         <div className="flex items-center justify-center w-9 h-9 rounded-full bg-primary/10">
           <Brain className="w-5 h-5 text-primary" />
         </div>
         <h1 className="text-xl font-heading font-semibold text-foreground">EmotionSense</h1>
-      </div>
+      </button>
       
       <div className="flex items-center gap-2">
         <div className="hidden sm:flex items-center gap-2 mr-2">
